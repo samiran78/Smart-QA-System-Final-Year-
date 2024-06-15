@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body style="display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; text-shadow:#c810a0 #f0f0f0; font-family: Arial, sans-serif; animation: fadeIn 1s ease-in-out;">
+
+    <div style="background: rgb(253, 255, 252); padding: 2rem; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 300px; animation: fadeIn 1.5s ease-in-out;">
+        <h2 style="margin-bottom: 1.5rem; text-align: center; color: #333; animation: fadeIn 2s ease-in-out;">Signup</h2>
+        <form id="loginForm" onsubmit="return validateForm()" style="animation: fadeIn 2.5s ease-in-out;">
+            <div style="margin-bottom: 1rem;">
+                <label for="username"  style="display: block; margin-bottom: 0.5rem; color: #666;">username</label>
+                <input type="text" id="username" name="username" placeholder="xyz14" required style="width: 100%; padding: 0.5rem; border: 1px solid #c810a0; border-radius: 4px; transition: border-color 0.3s;">
+                <label for="email"  style="display: block; margin-bottom: 0.5rem; color: #666;">Email</label>
+                <input type="email" id="email" name="email" placeholder="abc@gmail.com" required style="width: 100%; padding: 0.5rem; border: 1px solid #c810a0; border-radius: 4px; transition: border-color 0.3s;">
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <label for="password" style="display: block; margin-bottom: 0.5rem; color: #666;">Password</label>
+                <input type="password" id="password" name="password" placeholder="*******"required style="width: 100%; padding: 0.5rem; border: 1px solid #c810a0; border-radius: 4px; transition: border-color 0.3s;">
+            </div>
+            <button type="submit" style="width: 100%; padding: 0.75rem; border: none; border-radius: 4px; background-color: #c42adf; color: rgb(130, 4, 141); font-size: 1rem; cursor: pointer; transition: background-color 0.3s;">Signup</button>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            var username = document.getElementById("username").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            if (username === "" || password === "") {
+                alert("Username and password must be filled out");
+                document.getElementById("loginForm").style.animation = "shake 0.5s";
+                setTimeout(function() {
+                    document.getElementById("loginForm").style.animation = "";
+                }, 500);
+                return false;
+            }
+            return true;
+        }
+
+        // Add focus effects
+        var inputs = document.querySelectorAll("input");
+        inputs.forEach(input => {
+            input.addEventListener("focus", function() {
+                this.style.borderColor = "#007BFF";
+            });
+            input.addEventListener("blur", function() {
+                this.style.borderColor = "#ccc";
+            });
+        });
+
+        // Add hover effect to button
+        var button = document.querySelector("button");
+        button.addEventListener("mouseover", function() {
+            this.style.backgroundColor = "#0056b3";
+        });
+        button.addEventListener("mouseout", function() {
+            this.style.backgroundColor = "#007BFF";
+        });
+    </script>
+
+</body>
+</html>
+
